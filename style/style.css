@@ -1,0 +1,265 @@
+body {
+  background-color: #3a4764;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Spartan", sans-serif;
+}
+
+body .App {
+  margin-top: 100px;
+  width: 540px;
+  height: 100px;
+}
+
+body .App header {
+  height: 100px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+body .App header div:first-of-type {
+  font-size: 28px;
+  letter-spacing: 0px;
+}
+
+body .App main .screen {
+  height: 128px;
+  background-color: #182034;
+  border-radius: 10px;
+  color: white;
+  font-size: 44px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding-right: 24px;
+}
+
+body .App main .screen div:first-of-type {
+  font-size: 25px;
+  color: #444b5a;
+  padding-top: 10px;
+}
+
+body .App main .keypad {
+  height: 464px;
+  background-color: #232c43;
+  margin-top: 24px;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[5];
+      grid-template-rows: repeat(5, 1fr);
+  gap: 24px;
+  padding: 24px;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #444b5a;
+}
+
+body .App main .keypad .btn-num {
+  background-color: #eae3dc;
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 4px 0px 0px #b4a597;
+          box-shadow: 0 4px 0px 0px #b4a597;
+  color: #444b5a;
+  border: none;
+  cursor: pointer;
+  font-family: "Spartan", sans-serif;
+  font-size: 28px;
+  padding-top: 8px;
+}
+
+body .App main .keypad .btn-num:active {
+  background-color: #b4a597;
+  -webkit-transform: translate(0, 4px);
+          transform: translate(0, 4px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body .App main .keypad .btn-delete {
+  background-color: #637097;
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 4px 0px 0px #404e72;
+          box-shadow: 0 4px 0px 0px #404e72;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Spartan", sans-serif;
+  font-size: 28px;
+  padding-top: 8px;
+  font-size: 20px;
+}
+
+body .App main .keypad .btn-delete:active {
+  background-color: #404e72;
+  -webkit-transform: translate(0, 4px);
+          transform: translate(0, 4px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body .App main .keypad .btn-operation {
+  background-color: #eae3dc;
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 4px 0px 0px #b4a597;
+          box-shadow: 0 4px 0px 0px #b4a597;
+  color: #444b5a;
+  border: none;
+  cursor: pointer;
+  font-family: "Spartan", sans-serif;
+  font-size: 28px;
+  padding-top: 8px;
+}
+
+body .App main .keypad .btn-operation:active {
+  background-color: #b4a597;
+  -webkit-transform: translate(0, 4px);
+          transform: translate(0, 4px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body .App main .keypad .btn-reset {
+  background-color: #637097;
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 4px 0px 0px #404e72;
+          box-shadow: 0 4px 0px 0px #404e72;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Spartan", sans-serif;
+  font-size: 28px;
+  padding-top: 8px;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  font-size: 20px;
+}
+
+body .App main .keypad .btn-reset:active {
+  background-color: #404e72;
+  -webkit-transform: translate(0, 4px);
+          transform: translate(0, 4px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body .App main .keypad .btn-equal {
+  background-color: #d03f2f;
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 4px 0px 0px #93261a;
+          box-shadow: 0 4px 0px 0px #93261a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Spartan", sans-serif;
+  font-size: 28px;
+  padding-top: 8px;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 2;
+  grid-column: 3 / span 2;
+  font-size: 20px;
+}
+
+body .App main .keypad .btn-equal:active {
+  background-color: #93261a;
+  -webkit-transform: translate(0, 4px);
+          transform: translate(0, 4px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: #3e52a3;
+}
+/*# sourceMappingURL=style.css.map */
