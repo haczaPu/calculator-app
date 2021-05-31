@@ -7,28 +7,36 @@ class Calculator {
 
   reset() {
     this.prevOperand = "";
-    this.currOperand = "";
+    this.currOperand = "0";
     this.operation = undefined;
+    this.error = false;
   }
 
   delete() {
-    this.currOperand = this.currOperand.toString().slice(0, -1);
+    if (this.currOperand !== "0") {
+      this.currOperand = this.currOperand.toString().slice(0, -1);
+    }
   }
 
   appendNumber(number) {
     if (number === "." && this.currOperand.includes(".")) return;
+    if (this.currOperand.length > 12) return;
     this.currOperand = this.currOperand.toString() + number.toString();
   }
 
   choseOperation(operation) {
     if (this.currOperand === "") return;
-    if (this.prevOperand !== "") {
-      this.compute();
-    }
+    if (this.prevOperand !== "") this.compute();
 
     this.operation = operation;
     this.prevOperand = this.currOperand;
-    this.currOperand = "";
+    this.currOperand = "0";
+  }
+
+  checkForError(current, operation) {
+    if (current === 0 && operation === "/") {
+      return (this.error = true);
+    }
   }
 
   compute() {
@@ -53,19 +61,48 @@ class Calculator {
       default:
         return;
     }
+    if (computation.toString().length > 12) {
+      computation = computation.toPrecision(12);
+      console.log("hey");
+    }
+    this.checkForError(current, this.operation);
     this.currOperand = computation;
     this.operation = undefined;
     this.prevOperand = "";
+
+    console.log(computation.toString().length);
   }
 
   getDisplayNumber(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (!this.error) {
+      const stringNumber = number.toString();
+      const integerDigits = parseFloat(stringNumber.split(".")[0]);
+      const decimalDigits = stringNumber.split(".")[1];
+      let integerDisplay;
+
+      if (isNaN(integerDigits)) {
+        integerDisplay = "";
+      } else {
+        integerDisplay = integerDigits.toLocaleString("en", { maximumFractionDigits: 0 });
+      }
+
+      if (decimalDigits != null) {
+        return `${integerDisplay}.${decimalDigits}`;
+      } else {
+        return integerDisplay;
+      }
+    } else {
+      this.reset();
+      return "division by zero";
+    }
   }
 
   updateScreen() {
     this.currOperandTxtEle.innerText = this.getDisplayNumber(this.currOperand);
     if (this.operation != null) {
       this.prevOperandTxtEle.innerText = `${this.getDisplayNumber(this.prevOperand)} ${this.operation}`;
+    } else {
+      this.prevOperandTxtEle.innerText = "";
     }
   }
 }

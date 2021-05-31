@@ -59,8 +59,9 @@ body .App main .screen {
   padding-right: 24px;
 }
 
-body .App main .screen div:first-of-type {
+body .App main .screen .prev-operand {
   font-size: 25px;
+  min-height: 31px;
   color: #444b5a;
   padding-top: 10px;
 }

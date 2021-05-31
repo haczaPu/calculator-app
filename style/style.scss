@@ -38,8 +38,9 @@ body {
         align-items: flex-end;
         padding-right: 24px;
 
-        div:first-of-type {
+        .prev-operand {
           font-size: 25px;
+          min-height: 31px;
           color: hsl(221, 14%, 31%);
           padding-top: 10px;
         }
