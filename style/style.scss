@@ -1,7 +1,18 @@
 @import "button";
+@import "vars";
+
+@mixin transition {
+  transition: background-color 0.7s linear, color 0.7s linear;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
 
 body {
-  background-color: hsl(222, 26%, 31%);
+  @include transition();
+  background-color: $c-bg-main;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,41 +25,93 @@ body {
 
     header {
       height: 100px;
-      color: white;
+      color: $c-text-header;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 10px;
-      letter-spacing: 1px;
+      font-size: 28px;
 
-      div:first-of-type {
-        font-size: 28px;
-        letter-spacing: 0px;
+      .theme-toggler-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        letter-spacing: 1px;
+
+        .theme-title {
+          @include transition();
+          padding-right: 25px;
+        }
+
+        .theme-toggler {
+          @include transition();
+          position: relative;
+          display: inline-flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 85px;
+          height: 25px;
+          background-color: $c-bg-keypad;
+          border-radius: 25px;
+
+          label {
+            @include transition();
+            margin: 5px;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            border-radius: 16px;
+            border: 1px solid transparent;
+
+            &:hover {
+              border: 1px solid $c-keys-equal;
+            }
+            p {
+              padding-left: 2px;
+              position: absolute;
+              top: -15px;
+            }
+          }
+          input {
+            display: none;
+          }
+
+          .theme-toggler-ball {
+            position: absolute;
+            transition: all 0.5s ease-in-out;
+            left: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 16px;
+            background-color: $c-keys-equal;
+          }
+        }
       }
     }
     main {
       .screen {
+        @include transition();
         height: 128px;
-        background-color: hsl(224, 36%, 15%);
+        background-color: $c-bg-screen;
         border-radius: 10px;
-        color: white;
+        color: $c-text-display;
         font-size: 44px;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        padding-right: 24px;
+        padding: 10px 24px 0 0;
 
         .prev-operand {
           font-size: 25px;
           min-height: 31px;
-          color: hsl(221, 14%, 31%);
-          padding-top: 10px;
+          color: $c-text-prev-operand;
         }
       }
 
       .keypad {
+        @include transition();
         height: 464px;
-        background-color: hsl(223, 31%, 20%);
+        background-color: $c-bg-keypad;
         margin-top: 24px;
         border-radius: 10px;
         display: grid;
@@ -58,40 +121,31 @@ body {
         padding: 24px;
         justify-items: center;
         align-items: center;
-        color: hsl(221, 14%, 31%);
+        color: $c-keys-func;
 
         .btn-num {
           @include button;
         }
 
         .btn-delete {
-          @include button(hsl(225, 21%, 49%), hsl(224, 28%, 35%), white);
+          @include button($c-keys-func, $c-keys-func-shadow, $c-text-secondary);
           font-size: 20px;
         }
         .btn-operation {
           @include button;
         }
         .btn-reset {
-          @include button(hsl(225, 21%, 49%), hsl(224, 28%, 35%), white);
+          @include button($c-keys-func, $c-keys-func-shadow, $c-text-secondary);
           grid-column: 1 / span 2;
           font-size: 20px;
         }
 
         .btn-equal {
-          @include button(hsl(6, 63%, 50%), hsl(6, 70%, 34%), white);
+          @include button($c-keys-equal, $c-keys-equal-shadow, $c-text-secondary);
           grid-column: 3 / span 2;
           font-size: 20px;
         }
       }
     }
-  }
-}
-
-.attribution {
-  font-size: 11px;
-  text-align: center;
-
-  a {
-    color: hsl(228, 45%, 44%);
   }
 }

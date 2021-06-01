@@ -1,5 +1,83 @@
+body[data-theme="dark"] {
+  /* Backgrounds */
+  --c-bg-main: hsl(222, 26%, 31%);
+  --c-bg-keypad: hsl(223, 31%, 20%);
+  --c-bg-toggle: hsl(223, 31%, 20%);
+  --c-bg-screen: hsl(224, 36%, 15%);
+  /* Keys */
+  --c-keys-func: hsl(225, 21%, 49%);
+  --c-keys-func-shadow: hsl(224, 28%, 35%);
+  --c-keys-equal: hsl(6, 63%, 50%);
+  --c-keys-equal-shadow: hsl(6, 70%, 34%);
+  --c-toggle: hsl(6, 63%, 50%);
+  --c-keys: hsl(30, 25%, 89%);
+  --c-keys-shadow: hsl(28, 16%, 65%);
+  /* Text */
+  --c-text-primary: hsl(221, 14%, 31%);
+  --c-text-secondary: hsl(0, 0%, 100%);
+  --c-text-header: hsl(0, 0%, 100%);
+  --c-text-display: hsl(0, 0%, 100%);
+  --c-text-prev-operand: hsl(221, 14%, 31%);
+}
+
+body[data-theme="light"] {
+  /* Backgrounds */
+  --c-bg-main: hsl(0, 0%, 90%);
+  --c-bg-keypad: hsl(0, 5%, 81%);
+  --c-bg-toggle: hsl(0, 5%, 81%);
+  --c-bg-screen: hsl(0, 0%, 93%);
+  /* Keys */
+  --c-keys-func: hsl(185, 42%, 37%);
+  --c-keys-func-shadow: hsl(185, 58%, 25%);
+  --c-keys-equal: hsl(25, 98%, 40%);
+  --c-keys-equal-shadow: hsl(25, 99%, 27%);
+  --c-toggle: hsl(25, 98%, 40%);
+  --c-keys: hsl(45, 7%, 89%);
+  --c-keys-shadow: hsl(35, 11%, 61%);
+  /* Text */
+  --c-text-primary: hsl(60, 10%, 19%);
+  --c-text-secondary: hsl(0, 0%, 100%);
+  --c-text-header: hsl(60, 10%, 19%);
+  --c-text-display: hsl(60, 10%, 19%);
+  --c-text-prev-operand: hsl(221, 14%, 51%);
+}
+
+body[data-theme="neon"] {
+  /* Backgrounds */
+  --c-bg-main: hsl(268, 75%, 9%);
+  --c-bg-keypad: hsl(268, 71%, 12%);
+  --c-bg-toggle: hsl(268, 71%, 12%);
+  --c-bg-screen: hsl(268, 71%, 12%);
+  /* Keys */
+  --c-keys-func: hsl(281, 89%, 26%);
+  --c-keys-func-shadow: hsl(285, 91%, 52%);
+  --c-keys-equal: hsl(176, 100%, 44%);
+  --c-keys-equal-shadow: hsl(177, 92%, 70%);
+  --c-toggle: hsl(176, 100%, 44%);
+  --c-keys: hsl(268, 47%, 21%);
+  --c-keys-shadow: hsl(290, 70%, 36%);
+  /* Text */
+  --c-text-primary: hsl(52, 100%, 62%);
+  --c-text-secondary: hsl(0, 0%, 100%);
+  --c-text-tertiary: hsl(198, 20%, 13%);
+  --c-text-header: hsl(52, 100%, 62%);
+  --c-text-display: hsl(52, 100%, 62%);
+  --c-text-prev-operand: hsl(52, 80%, 27%);
+}
+
+/* Backgrounds */
+/* Keys */
+/* Text */
+* {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body {
-  background-color: #3a4764;
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
+  background-color: var(--c-bg-main);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,7 +99,7 @@ body .App {
 
 body .App header {
   height: 100px;
-  color: white;
+  color: var(--c-text-header);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -31,20 +109,91 @@ body .App header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 28px;
+}
+
+body .App header .theme-toggler-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 10px;
   letter-spacing: 1px;
 }
 
-body .App header div:first-of-type {
-  font-size: 28px;
-  letter-spacing: 0px;
+body .App header .theme-toggler-wrapper .theme-title {
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
+  padding-right: 25px;
+}
+
+body .App header .theme-toggler-wrapper .theme-toggler {
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 85px;
+  height: 25px;
+  background-color: var(--c-bg-keypad);
+  border-radius: 25px;
+}
+
+body .App header .theme-toggler-wrapper .theme-toggler label {
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
+  margin: 5px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+}
+
+body .App header .theme-toggler-wrapper .theme-toggler label:hover {
+  border: 1px solid var(--c-keys-equal);
+}
+
+body .App header .theme-toggler-wrapper .theme-toggler label p {
+  padding-left: 2px;
+  position: absolute;
+  top: -15px;
+}
+
+body .App header .theme-toggler-wrapper .theme-toggler input {
+  display: none;
+}
+
+body .App header .theme-toggler-wrapper .theme-toggler .theme-toggler-ball {
+  position: absolute;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  left: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  background-color: var(--c-keys-equal);
 }
 
 body .App main .screen {
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
   height: 128px;
-  background-color: #182034;
+  background-color: var(--c-bg-screen);
   border-radius: 10px;
-  color: white;
+  color: var(--c-text-display);
   font-size: 44px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,19 +205,20 @@ body .App main .screen {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  padding-right: 24px;
+  padding: 10px 24px 0 0;
 }
 
 body .App main .screen .prev-operand {
   font-size: 25px;
   min-height: 31px;
-  color: #444b5a;
-  padding-top: 10px;
+  color: var(--c-text-prev-operand);
 }
 
 body .App main .keypad {
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
   height: 464px;
-  background-color: #232c43;
+  background-color: var(--c-bg-keypad);
   margin-top: 24px;
   border-radius: 10px;
   display: -ms-grid;
@@ -83,11 +233,11 @@ body .App main .keypad {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #444b5a;
+  color: var(--c-keys-func);
 }
 
 body .App main .keypad .btn-num {
-  background-color: #eae3dc;
+  background-color: var(--c-keys);
   width: 100%;
   height: 60px;
   border-radius: 10px;
@@ -100,18 +250,20 @@ body .App main .keypad .btn-num {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 4px 0px 0px #b4a597;
-          box-shadow: 0 4px 0px 0px #b4a597;
-  color: #444b5a;
+  -webkit-box-shadow: 0 4px 0px 0px var(--c-keys-shadow);
+          box-shadow: 0 4px 0px 0px var(--c-keys-shadow);
+  color: var(--c-text-primary);
   border: none;
   cursor: pointer;
   font-family: "Spartan", sans-serif;
   font-size: 28px;
   padding-top: 8px;
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
 }
 
 body .App main .keypad .btn-num:active {
-  background-color: #b4a597;
+  background-color: var(--c-keys-shadow);
   -webkit-transform: translate(0, 4px);
           transform: translate(0, 4px);
   -webkit-box-shadow: none;
@@ -119,7 +271,7 @@ body .App main .keypad .btn-num:active {
 }
 
 body .App main .keypad .btn-delete {
-  background-color: #637097;
+  background-color: var(--c-keys-func);
   width: 100%;
   height: 60px;
   border-radius: 10px;
@@ -132,19 +284,21 @@ body .App main .keypad .btn-delete {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 4px 0px 0px #404e72;
-          box-shadow: 0 4px 0px 0px #404e72;
-  color: white;
+  -webkit-box-shadow: 0 4px 0px 0px var(--c-keys-func-shadow);
+          box-shadow: 0 4px 0px 0px var(--c-keys-func-shadow);
+  color: var(--c-text-secondary);
   border: none;
   cursor: pointer;
   font-family: "Spartan", sans-serif;
   font-size: 28px;
   padding-top: 8px;
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
   font-size: 20px;
 }
 
 body .App main .keypad .btn-delete:active {
-  background-color: #404e72;
+  background-color: var(--c-keys-func-shadow);
   -webkit-transform: translate(0, 4px);
           transform: translate(0, 4px);
   -webkit-box-shadow: none;
@@ -152,7 +306,7 @@ body .App main .keypad .btn-delete:active {
 }
 
 body .App main .keypad .btn-operation {
-  background-color: #eae3dc;
+  background-color: var(--c-keys);
   width: 100%;
   height: 60px;
   border-radius: 10px;
@@ -165,18 +319,20 @@ body .App main .keypad .btn-operation {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 4px 0px 0px #b4a597;
-          box-shadow: 0 4px 0px 0px #b4a597;
-  color: #444b5a;
+  -webkit-box-shadow: 0 4px 0px 0px var(--c-keys-shadow);
+          box-shadow: 0 4px 0px 0px var(--c-keys-shadow);
+  color: var(--c-text-primary);
   border: none;
   cursor: pointer;
   font-family: "Spartan", sans-serif;
   font-size: 28px;
   padding-top: 8px;
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
 }
 
 body .App main .keypad .btn-operation:active {
-  background-color: #b4a597;
+  background-color: var(--c-keys-shadow);
   -webkit-transform: translate(0, 4px);
           transform: translate(0, 4px);
   -webkit-box-shadow: none;
@@ -184,7 +340,7 @@ body .App main .keypad .btn-operation:active {
 }
 
 body .App main .keypad .btn-reset {
-  background-color: #637097;
+  background-color: var(--c-keys-func);
   width: 100%;
   height: 60px;
   border-radius: 10px;
@@ -197,14 +353,16 @@ body .App main .keypad .btn-reset {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 4px 0px 0px #404e72;
-          box-shadow: 0 4px 0px 0px #404e72;
-  color: white;
+  -webkit-box-shadow: 0 4px 0px 0px var(--c-keys-func-shadow);
+          box-shadow: 0 4px 0px 0px var(--c-keys-func-shadow);
+  color: var(--c-text-secondary);
   border: none;
   cursor: pointer;
   font-family: "Spartan", sans-serif;
   font-size: 28px;
   padding-top: 8px;
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1 / span 2;
@@ -212,7 +370,7 @@ body .App main .keypad .btn-reset {
 }
 
 body .App main .keypad .btn-reset:active {
-  background-color: #404e72;
+  background-color: var(--c-keys-func-shadow);
   -webkit-transform: translate(0, 4px);
           transform: translate(0, 4px);
   -webkit-box-shadow: none;
@@ -220,7 +378,7 @@ body .App main .keypad .btn-reset:active {
 }
 
 body .App main .keypad .btn-equal {
-  background-color: #d03f2f;
+  background-color: var(--c-keys-equal);
   width: 100%;
   height: 60px;
   border-radius: 10px;
@@ -233,14 +391,16 @@ body .App main .keypad .btn-equal {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 4px 0px 0px #93261a;
-          box-shadow: 0 4px 0px 0px #93261a;
-  color: white;
+  -webkit-box-shadow: 0 4px 0px 0px var(--c-keys-equal-shadow);
+          box-shadow: 0 4px 0px 0px var(--c-keys-equal-shadow);
+  color: var(--c-text-secondary);
   border: none;
   cursor: pointer;
   font-family: "Spartan", sans-serif;
   font-size: 28px;
   padding-top: 8px;
+  -webkit-transition: background-color 0.7s linear, color 0.7s linear;
+  transition: background-color 0.7s linear, color 0.7s linear;
   -ms-grid-column: 3;
   -ms-grid-column-span: 2;
   grid-column: 3 / span 2;
@@ -248,19 +408,10 @@ body .App main .keypad .btn-equal {
 }
 
 body .App main .keypad .btn-equal:active {
-  background-color: #93261a;
+  background-color: var(--c-keys-equal-shadow);
   -webkit-transform: translate(0, 4px);
           transform: translate(0, 4px);
   -webkit-box-shadow: none;
           box-shadow: none;
-}
-
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-
-.attribution a {
-  color: #3e52a3;
 }
 /*# sourceMappingURL=style.css.map */

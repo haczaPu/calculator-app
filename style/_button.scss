@@ -1,4 +1,4 @@
-@mixin button($btn-color: hsl(30, 25%, 89%), $shadow-color: hsl(28, 16%, 65%), $txt-color: hsl(221, 14%, 31%)) {
+@mixin button($btn-color: $c-keys, $shadow-color: $c-keys-shadow, $txt-color: $c-text-primary) {
   background-color: $btn-color;
   width: 100%;
   height: 60px;
@@ -13,6 +13,7 @@
   font-family: "Spartan", sans-serif;
   font-size: 28px;
   padding-top: 8px;
+  transition: background-color 0.7s linear, color 0.7s linear;
 
   &:active {
     background-color: $shadow-color;

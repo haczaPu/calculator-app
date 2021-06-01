@@ -105,6 +105,21 @@ class Calculator {
       this.prevOperandTxtEle.innerText = "";
     }
   }
+
+  themeSwitch() {
+    if (document.getElementById("dark").checked) {
+      bodySelector.setAttribute("data-theme", document.getElementById("dark").value);
+      themeBall.style.left = "5px";
+    }
+    if (document.getElementById("light").checked) {
+      bodySelector.setAttribute("data-theme", document.getElementById("light").value);
+      themeBall.style.left = "35px";
+    }
+    if (document.getElementById("neon").checked) {
+      bodySelector.setAttribute("data-theme", document.getElementById("neon").value);
+      themeBall.style.left = "65px";
+    }
+  }
 }
 
 const numberButtons = document.querySelectorAll(".btn-num");
@@ -114,10 +129,16 @@ const resetButton = document.querySelector(".btn-reset");
 const equalButton = document.querySelector(".btn-equal");
 const prevOperandTxtEle = document.querySelector(".prev-operand");
 const currOperandTxtEle = document.querySelector(".curr-operand");
+const themeToggler = document.querySelector(".theme-toggler");
+const bodySelector = document.querySelector("body");
+const themeBall = document.querySelector(".theme-toggler-ball");
 
 const calculator = new Calculator(prevOperandTxtEle, currOperandTxtEle);
 
-//Num buttons
+//Event listeners
+themeToggler.addEventListener("click", () => {
+  calculator.themeSwitch();
+});
 
 numberButtons.forEach(btn => {
   btn.addEventListener("click", () => {
@@ -125,8 +146,6 @@ numberButtons.forEach(btn => {
     calculator.updateScreen();
   });
 });
-
-//Reset
 
 resetButton.addEventListener("click", () => {
   calculator.reset();
@@ -142,8 +161,6 @@ deleteButton.addEventListener("click", () => {
   calculator.delete();
   calculator.updateScreen();
 });
-
-//Operations buttons
 
 operationButtons.forEach(btn => {
   btn.addEventListener("click", () => {
