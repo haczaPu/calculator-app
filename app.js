@@ -10,6 +10,7 @@ class Calculator {
     this.currOperand = "0";
     this.operation = undefined;
     this.error = false;
+    this.equalSelectedLast = true;
   }
 
   delete() {
@@ -19,6 +20,10 @@ class Calculator {
   }
 
   appendNumber(number) {
+    if (this.equalSelectedLast) {
+      this.currOperand = "";
+      this.equalSelectedLast = false;
+    }
     if (number === "." && this.currOperand.includes(".")) return;
     if (this.currOperand.length > 12) return;
     this.currOperand = this.currOperand.toString() + number.toString();
@@ -37,6 +42,10 @@ class Calculator {
     if (current === 0 && operation === "/") {
       return (this.error = true);
     }
+  }
+
+  handleEqualSelectedLast() {
+    this.equalSelectedLast = true;
   }
 
   compute() {
@@ -153,6 +162,7 @@ resetButton.addEventListener("click", () => {
 });
 
 equalButton.addEventListener("click", () => {
+  calculator.handleEqualSelectedLast();
   calculator.compute();
   calculator.updateScreen();
 });
