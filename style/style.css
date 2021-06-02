@@ -77,6 +77,7 @@ body[data-theme="neon"] {
 body {
   -webkit-transition: background-color 0.7s linear, color 0.7s linear;
   transition: background-color 0.7s linear, color 0.7s linear;
+  height: 100vh;
   background-color: var(--c-bg-main);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -85,20 +86,31 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   font-family: "Spartan", sans-serif;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
 }
 
 body .App {
-  margin-top: 100px;
   width: 540px;
-  height: 100px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 540px) {
+  body .App {
+    width: 100%;
+  }
 }
 
 body .App header {
   height: 100px;
+  width: 100%;
   color: var(--c-text-header);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -110,6 +122,12 @@ body .App header {
       -ms-flex-align: center;
           align-items: center;
   font-size: 28px;
+}
+
+@media screen and (max-width: 540px) {
+  body .App header {
+    height: 80px;
+  }
 }
 
 body .App header .theme-toggler-wrapper {
@@ -208,10 +226,30 @@ body .App main .screen {
   padding: 10px 24px 0 0;
 }
 
+@media screen and (max-width: 540px) {
+  body .App main .screen {
+    height: 90px;
+    font-size: 32px;
+  }
+}
+
 body .App main .screen .prev-operand {
   font-size: 25px;
   min-height: 31px;
   color: var(--c-text-prev-operand);
+}
+
+@media screen and (max-width: 540px) {
+  body .App main .screen .prev-operand {
+    font-size: 16px;
+    min-height: 20px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  body .App main .screen .curr-operand {
+    height: 30px;
+  }
 }
 
 body .App main .keypad {
@@ -234,6 +272,13 @@ body .App main .keypad {
       -ms-flex-align: center;
           align-items: center;
   color: var(--c-keys-func);
+}
+
+@media screen and (max-width: 540px) {
+  body .App main .keypad {
+    gap: 12px;
+    height: 100%;
+  }
 }
 
 body .App main .keypad .btn-num {

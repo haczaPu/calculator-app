@@ -1,5 +1,6 @@
 @import "button";
 @import "vars";
+@import "breakpoints";
 
 @mixin transition {
   transition: background-color 0.7s linear, color 0.7s linear;
@@ -12,24 +13,34 @@
 
 body {
   @include transition();
+  height: 100vh;
   background-color: $c-bg-main;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   font-family: "Spartan", sans-serif;
+  flex-shrink: 1;
 
   .App {
-    margin-top: 100px;
     width: 540px;
-    height: 100px;
+    padding: 20px;
+
+    @include breakpoint(mobile) {
+      width: 100%;
+    }
 
     header {
       height: 100px;
+      width: 100%;
       color: $c-text-header;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 28px;
+      @include breakpoint(mobile) {
+        height: 80px;
+      }
 
       .theme-toggler-wrapper {
         display: flex;
@@ -101,10 +112,24 @@ body {
         align-items: flex-end;
         padding: 10px 24px 0 0;
 
+        @include breakpoint(mobile) {
+          height: 90px;
+          font-size: 32px;
+        }
+
         .prev-operand {
           font-size: 25px;
           min-height: 31px;
           color: $c-text-prev-operand;
+          @include breakpoint(mobile) {
+            font-size: 16px;
+            min-height: 20px;
+          }
+        }
+        .curr-operand {
+          @include breakpoint(mobile) {
+            height: 30px;
+          }
         }
       }
 
@@ -122,6 +147,10 @@ body {
         justify-items: center;
         align-items: center;
         color: $c-keys-func;
+        @include breakpoint(mobile) {
+          gap: 12px;
+          height: 100%;
+        }
 
         .btn-num {
           @include button;
